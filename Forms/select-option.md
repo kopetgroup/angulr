@@ -3,8 +3,8 @@
 html:
 ```
 <!-- perpage -->
-<select class="mr-1 form-control form-control-sm rounded bright" style="border:none" ng-change="vm.unitChanged()" ng-model="vm.perpage">
-  <option ng-selected="vm.perpage == i" ng-repeat="i in vm.ppages" ng-value="i">{{i}}</option>
+<select class="mr-1 form-control form-control-sm rounded bright" style="border:none" ng-change="vm.setlimit()" ng-model="vm.perpage">
+  <option ng-selected="vm.perpage == i" ng-repeat="i in vm.ppages" value="{{i | number}}">{{i}}</option>
 </select>
 ```
 
@@ -18,4 +18,13 @@ if($cookies.get('perpage')==undefined){
 }
 vm.ppages = [5,10,20,30,50,100];
 
+```
+
+change:
+```
+//change limit
+vm.setlimit = ()=>{
+  $cookies.put('perpage',vm.perpage);
+  //getfiles(conf,api,vm);
+}
 ```
